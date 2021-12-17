@@ -12,7 +12,7 @@
     $sql = $localUser->loginDB();
 
     $result = mysqli_query($conn, $sql);
-    if(true){
-
+    if(mysqli_num_rows($resutl) == 1){
+      
     }
   }
