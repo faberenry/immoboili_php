@@ -4,7 +4,7 @@
 
   if( isset($_SESSION['userLogged'])){
     //utente già loggato problemini
-    header('../../index.php');
+    header('Location: ../../index.php');
     exit();
   }if(isset($_SESSION['userLogin'])){
     //faccio il login
@@ -13,6 +13,21 @@
 
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($resutl) == 1){
-      
+      if( !$localUser->isSospeso()){
+        $row = $result->fetch_array();
+        $codUser = $row['codUtente'];
+        $_SESSION['userLogged'] = $codUser;
+        header('Location: ../../index.php?login=1');
+      }
+      else
+      {
+        header('Location: ../../index.php?error=sospeso');
+        exit();
+      }
     }
+  }
+  else
+  {
+    header('Location: ../../index.php');
+    exit();
   }

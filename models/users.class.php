@@ -34,4 +34,44 @@ class User{
             FROM utente 
             WHERE username = '$this->username' AND password = '$this->password';";
   }
+
+  public function getUsername()
+  {
+    return $this->username;
+  }
+
+  public function getEmail()
+  {
+    return $this->email;
+  }
+
+  public function getPassword()
+  {
+    return $this->password;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  public function getSurname()
+  {
+    return $this->surname;
+  }
+
+  public function getPhoneNumber()
+  {
+    return $this->phoneNumber;
+  }
+
+  public function isSospeso()
+  {
+    return $this->sospeso;
+  }
+
+  public function setSospeso(bool $sospeso)
+  {
+    $this->sospeso = $sospeso;
+  }
 }
