@@ -1,7 +1,7 @@
 <?php
   session_start();
-  require('./includes/config.inc.php');
-
+ // require('./includes/config.inc.php');
+?>
 <!--       MAIN       -->
         <main id="main" class="center-text">
             
