@@ -1,6 +1,6 @@
 <?php
   require('../config.inc.php');
-  require('../../models/users.class.php');
+  require('../models/users.class.php');
 
   if( isset($_SESSION['userLogged'])){
     //utente già loggato problemini

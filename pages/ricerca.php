@@ -41,7 +41,7 @@
             </div>
             <div class="homeshowcase">
                 <div class="showcase-card">
-                    <img src="./public/images/dio.jpg" alt="">
+                    <img src="./images/dio.jpg" alt="">
                     <div class="card-description">
                         <h5>Esempio 1</h5>
                         <h6>40mq</h6>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="showcase-card">
-                    <img src="./public/images/dio.jpg" alt="">
+                    <img src="./images/dio.jpg" alt="">
                     <div class="card-description">
                         <h5>Esempio 1</h5>
                         <h6>40mq</h6>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="showcase-card">
-                    <img src="./public/images/dio.jpg" alt="">
+                    <img src="./images/dio.jpg" alt="">
                     <div class="card-description">
                         <h5>Esempio 1</h5>
                         <h6>40mq</h6>

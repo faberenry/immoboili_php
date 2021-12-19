@@ -22,7 +22,8 @@
       $result = mysqli_query($conn, $sql);
       if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_array($result)){
-          echo "";
+          $corpo = $row['corpo'];
+          echo $corpo;
         }
       }
       else{

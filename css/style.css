@@ -126,12 +126,12 @@ li
 
 #main
 {
-    background-image:    url("./public/images/sfondoBGSfocato.jpeg");
+    background-image:    url("../images/sfondoBGSfocato.jpeg");
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;
 
-    height: 500px;
+    height: 600px;
     margin: 0;
     padding: 30px;
 }
