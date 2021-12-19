@@ -7,7 +7,7 @@ if ($nome != "") {
 ?>
 <script type="text/javascript">
   function invia_mess(mex){
-    var destinatario = document.getElementById("handle");
+    var destinatario = document.getElementById("handle").value;
     var http = new XMLHttpRequest(message);
     var url = "../includes/chat/inserisciMessaggio.inc.php";
     http.open("GET", url+"?message="+mex+"&destinatario="+destinatario, true);
