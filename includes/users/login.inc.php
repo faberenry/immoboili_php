@@ -17,7 +17,7 @@
         $row = $result->fetch_array();
         $codUser = $row['codUtente'];
         $_SESSION['userLogged'] = $codUser;
-        header('Location: ../../index.php?login=1');
+        header('Location: ../../index.php?login=success');
       }
       else
       {
