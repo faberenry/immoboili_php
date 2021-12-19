@@ -1,15 +1,8 @@
-<?php
-session_start();
-$nome = htmlspecialchars($_GET['nome']);
-if ($nome != "") {
-  $_SESSION['nome'] = $nome;
-}
-?>
 <script type="text/javascript">
   function invia_mess(mex){
     var destinatario = document.getElementById("handle").value;
     var http = new XMLHttpRequest(message);
-    var url = "../includes/chat/inserisciMessaggio.inc.php";
+    var url = "./includes/chat/inserisciMessaggio.inc.php";
     http.open("GET", url+"?message="+mex+"&destinatario="+destinatario, true);
     http.onreadystatechange = function() {
       if(http.readyState == 4 && http.status == 200) {
@@ -22,7 +15,7 @@ if ($nome != "") {
 
   function visualizzaconv(){
     var http = new XMLHttpRequest(message);
-    var url = "../includes/chat/visualizzaChat.inc.php";
+    var url = "./includes/chat/visualizzaChat.inc.php";
     http.open("GET", url, true);
     http.onreadystatechange = function() {
       if(http.readyState == 4 && http.status == 200) {
