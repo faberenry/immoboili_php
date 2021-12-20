@@ -13,13 +13,13 @@
                     <!--Filters-->
                     <div class="filters">
                         <h2>Filtri</h2>
-                        <div class="filter-section">
+                        <!--<div class="filter-section">
                             <label for="distance"><h6>Distanza:</h6></label>
                             <input id="distance" name="distance" type="range" min="1" max="100" value="50">
-                        </div>
+                        </div>-->
                         <div class="filter-section">
                             <label for="price"><h6>Prezzo:</h6></label>
-                            <input id="price" name="price" type="range" min="1" max="100" value="50">
+                            <input id="price" name="price" type="range" min="1" max="500" value="250">
                         </div>
                         <div class="filter-section">
                             <h6>Tipologia:</h6>
@@ -40,39 +40,58 @@
                 </form>
             </div>
             <div class="homeshowcase">
-                <div class="showcase-card">
-                    <img src="./images/dio.jpg" alt="">
-                    <div class="card-description">
-                        <h5>Esempio 1</h5>
-                        <h6>40mq</h6>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, nisi.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ad?
-                        </p>
-                    </div>
-                </div>
-                <div class="showcase-card">
-                    <img src="./images/dio.jpg" alt="">
-                    <div class="card-description">
-                        <h5>Esempio 1</h5>
-                        <h6>40mq</h6>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, nisi.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ad?
-                        </p>
-                    </div>
-                </div>
-                <div class="showcase-card">
-                    <img src="./images/dio.jpg" alt="">
-                    <div class="card-description">
-                        <h5>Esempio 1</h5>
-                        <h6>40mq</h6>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, nisi.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ad?
-                        </p>
-                    </div>
-                </div>
+            <?php
+
+                require('./pages/includes/config.inc.php');
+                $sql = "SELECT * 
+                        FROM annuncio 
+                        JOIN locazione ON annuncio.codLuogo = locazione.codLuogo
+                        LEFT JOIN immagini ON annuncio.codAnnuncio = immagini.codAnnuncio";
+                if(isset($_GET['search-term']) && $_GET['search-term'] != ""){
+                    $cerca = $_GET['search-term'];
+                    $sql = $sql."WHERE (noteAggiuntive LIKE '%$cerca% OR serviziVicini LIKE '%$cerca%' 
+                                            OR mezziDiTrasposrto LIKE '%$cerca%' OR tipologiaAppartamento LIKE '%$cerca%')";
+                }
+                
+                $result = mysqli_query($conn, $sql);
+                if($result){
+                    if(mysqli_num_rows($result) > 0){
+                        while($row = $result->fetch_array()){
+                            //stampo gli annunci
+                            ?> 
+                            <div class='showcase-card'>
+                                <?php 
+                                if($row['imagePath'] == ""){?>
+                                    <img src="./images/missing.jpg" alt="">
+                                <?php
+                                }else{
+                                    $path = $row['imagePath'];
+                                    echo "<img src='$path' alt=''>";
+                                }
+                                ?>
+                                <div class="card-description">
+                                <?php
+                                    $locazione = $row['nomeVia']." ".$row['numeroCivico'].",".$row['citofono'];
+                                    $codAnnuncio = $row['codAnnuncio'];
+                                    $servizi = $row['serviziVicini'];
+                                    echo "<h5>Luogo: $locazione</h5>";
+                                    echo "<p>Costo Mensile: ".$row['costoMensile']."</p>";
+                                    echo "<p>Servizi:$servizi</p>";
+                                    echo "<p><a href='./pages/includes/annuncio/dettaglio.inc.php?codAnnuncio=$codAnnuncio'>
+                                            Dettaglio</a></p>";
+                                ?>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }else{
+                    ?>
+                    <h4 class='nonTrovato'>Nessun annuncio presente</h4>
+                    <?php
+                    }
+                    
+                }
+                ?>
             </div>
             <div class="maps-ads">
                 <div class="map">
