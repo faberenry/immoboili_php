@@ -433,3 +433,32 @@ input[type=range]:focus::-ms-fill-upper {
     color: #555;
     border-radius: 30px;
 }
+
+.login{
+    width: 60%;
+    height: auto;
+    float: left;
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.login h4{
+    color: #FFA500;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+    font-size: 50px;
+}
+
+.login input{
+    margin: 10px;
+    width: 100%;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+}
+
+.login input[type=submit]{
+    background-color: #FFA500;
+    color: white;
+}

@@ -35,19 +35,18 @@
                         
                         <div class="offcanvas-body">
                           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
+                            <li class="nav-item">
+                              <a class="nav-link" href="./pages/includes/router.inc.php?url=login">Login/Logout</a>
+                            </li>
                             <li class="nav-item">
                               <a class="nav-link" href="./pages/includes/router.inc.php?url=chat">Chat</a>
                             </li>
-
                             <li class="nav-item">
                               <a class="nav-link" href="./pages/includes/router.inc.php?url=sponsorizzaAnnucio">Sponsorizzare Annuncio</a>
                             </li>
-
                             <li class="nav-item">
                               <a class="nav-link" href="#">Calendario</a>
                             </li>
-
                             <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gestione Annunci

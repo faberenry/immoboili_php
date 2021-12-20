@@ -1,6 +1,7 @@
 <?php
   session_start();
- // require('./includes/config.inc.php');
+  //require('./includes/config.inc.php');
+  //$_SESSION['userLogged'] = 2; //per scopo di prova l'utente loggato sarà l'utente prova 2
 ?>
 <!DOCTYPE html>
 <html>

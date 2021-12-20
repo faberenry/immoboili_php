@@ -4,30 +4,40 @@
 
   if( isset($_SESSION['userLogged'])){
     //utente già loggato problemini
-    header('Location: ../../index.php');
+    header('Location: ../../index.php?login=logged');
     exit();
-  }if(isset($_SESSION['userLogin'])){
+  }else if(isset($_SESSION['userLogin'])){
     //faccio il login
     $localUser = $_SESSION['userLogin'];
     $sql = $localUser->loginDB();
-
+    //echo $sql;
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($resutl) == 1){
       if( !$localUser->isSospeso()){
         $row = $result->fetch_array();
         $codUser = $row['codUtente'];
-        $_SESSION['userLogged'] = $codUser;
-        header('Location: ../../index.php?login=success');
+        $sql = "SELECT * FROM locatore WHERE codUtente = '$codUser';";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) == 1){
+          $_SESSION['userLogged'] = $codUser;
+          header('Location: ../../../index.php?login=locatore');
+          exit();
+        }
+        else{
+          $_SESSION['userLogged'] = $codUser;
+          header('Location: ../../../index.php?login=studente');
+          exit();
+        }
       }
       else
       {
-        header('Location: ../../index.php?error=sospeso');
+        header('Location: ../../../index.php?error=sospeso');
         exit();
       }
     }
   }
   else
   {
-    header('Location: ../../index.php');
+    header('Location: ../router.inc.php?url=main');
     exit();
   }
