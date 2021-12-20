@@ -49,10 +49,37 @@
                         LEFT JOIN immagini ON annuncio.codAnnuncio = immagini.codAnnuncio";
                 if(isset($_GET['search-term']) && $_GET['search-term'] != ""){
                     $cerca = $_GET['search-term'];
-                    $sql = $sql."WHERE (noteAggiuntive LIKE '%$cerca% OR serviziVicini LIKE '%$cerca%' 
-                                            OR mezziDiTrasposrto LIKE '%$cerca%' OR tipologiaAppartamento LIKE '%$cerca%')";
+                    $sql = $sql." WHERE (noteAggiuntive LIKE '%$cerca%' OR serviziVicini LIKE '%$cerca%' 
+                                            OR mezziDiTrasporto LIKE '%$cerca%' OR tipologiaAppartamento LIKE '%$cerca%')";
                 }
-                
+                if(isset($_GET['price']) && $_GET['price'] != "250"){
+                    $prezzo = $_GET['price'];
+                    if(strpos($sql, "WHERE") !== false){
+                        $sql = $sql." AND (costoMensile > $prezzo)";
+                        //echo $sql;
+                    }else{
+                        $sql = $sql." WHERE (costoMensile > $prezzo)";
+                    }
+                }
+                if(isset($_GET['type-filter'])){
+                    $tipologia = $_GET['type-filter'];
+                    if(strpos($sql, "WHERE") !== false){
+                        $sql = $sql." AND (tipologiaAppartamento LIKE '%$tipologia%')";
+                        //echo $sql;
+                    }else{
+                        $sql = $sql." WHERE (tipologiaAppartamento LIKE '%$tipologia%')";
+                    }
+                }
+                if(isset($_GET['dimension']) && $_GET['dimension'] != "50"){
+                    $dim = $_GET['dimension'];
+                    if(strpos($sql, "WHERE") !== false){
+                        $sql = $sql." AND (metratura > $dim)";
+                        //echo $sql;
+                    }else{
+                        $sql = $sql." WHERE (metratura > $dim)";
+                    }
+                }
+                //echo $sql;
                 $result = mysqli_query($conn, $sql);
                 if($result){
                     if(mysqli_num_rows($result) > 0){
@@ -88,8 +115,9 @@
                     ?>
                     <h4 class='nonTrovato'>Nessun annuncio presente</h4>
                     <?php
-                    }
-                    
+                    }                    
+                }else{
+                    echo "<h4 class='nonTrovato'>Nessun annuncio presente</h4>";
                 }
                 ?>
             </div>
