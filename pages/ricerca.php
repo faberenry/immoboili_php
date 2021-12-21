@@ -43,7 +43,8 @@
             <?php
 
                 require('./pages/includes/config.inc.php');
-                $sql = "SELECT * 
+                $sql = "SELECT locazione.nomeVia, locazione.numeroCivico, locazione.citofono, annuncio.costoMensile, 
+                                annuncio.serviziVicini, annuncio.codAnnuncio, immagini.imagePath 
                         FROM annuncio 
                         JOIN locazione ON annuncio.codLuogo = locazione.codLuogo
                         LEFT JOIN immagini ON annuncio.codAnnuncio = immagini.codAnnuncio";
@@ -73,10 +74,10 @@
                 if(isset($_GET['dimension']) && $_GET['dimension'] != "50"){
                     $dim = $_GET['dimension'];
                     if(strpos($sql, "WHERE") !== false){
-                        $sql = $sql." AND (metratura > $dim)";
+                        $sql = $sql." AND (metratura >= $dim)";
                         //echo $sql;
                     }else{
-                        $sql = $sql." WHERE (metratura > $dim)";
+                        $sql = $sql." WHERE (metratura >= $dim)";
                     }
                 }
                 //echo $sql;
@@ -101,10 +102,11 @@
                                     $locazione = $row['nomeVia']." ".$row['numeroCivico'].",".$row['citofono'];
                                     $codAnnuncio = $row['codAnnuncio'];
                                     $servizi = $row['serviziVicini'];
+                                    $costo = $row['costoMensile'];
                                     echo "<h5>Luogo: $locazione</h5>";
-                                    echo "<p>Costo Mensile: ".$row['costoMensile']."</p>";
+                                    echo "<p>Costo Mensile: $costo</p>";
                                     echo "<p>Servizi:$servizi</p>";
-                                    echo "<p><a href='./pages/includes/annuncio/dettaglio.inc.php?codAnnuncio=$codAnnuncio'>
+                                    echo "<p><a href='./pages/dettaglio.php?codAnnuncio=$codAnnuncio'>
                                             Dettaglio</a></p>";
                                 ?>
                                 </div>

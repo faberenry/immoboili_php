@@ -2,7 +2,7 @@
 <!--       MAIN       -->
 <main id="main" class="center-text">
     
-    <form action="" class="search-bar">
+    <form  class="search-bar">
     
         <input type="text" id="search-field" name="research" minlength="0" maxlength="35" placeholder="Ricerca appartamento">
         

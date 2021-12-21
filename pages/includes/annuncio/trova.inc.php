@@ -1,5 +1,5 @@
 <?php
-
+  //funzionamento ricerca.php (copiato e incollato lì il codice), pagina non funzionante
   require('./pages/includes/config.inc.php');
   //$codAnnnuncio = $_GET['codAnnuncio'];
 
