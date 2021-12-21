@@ -8,5 +8,5 @@
 1. Fornirsi di un MySQL DB, scaricare il file database.sql e importarlo nel DB (noi usiamo XAMPP)
 2. Scaricare la repository e assicurarsi di avere un servizio di hosting web (localhost)
 3. Modificare il file "config.inc.php" con le credenziali del proprio DB
-4. Aprire il proprio servizio di hosting web e digitare localhost/immoboili_php
+4. Aprire Chrome e digitare localhost/immoboili_php
 5. Ora potrete visualizzare il sito di Immoboili
