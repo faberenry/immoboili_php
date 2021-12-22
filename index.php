@@ -1,5 +1,10 @@
 <?php
   session_start();
+  use OpenApi\Annotations as OA;
+  /** 
+   * @OA\Info(title="Progetto Immoboili") 
+  */
+  
   //require('./includes/config.inc.php');
   //$_SESSION['userLogged'] = 2; //per scopo di prova l'utente loggato sarà l'utente prova 2
 ?>
@@ -36,7 +41,9 @@
       }else{
         require('./pages/main.php');
       }
+      echo "";
       require("./pages/footer.php");
     ?>
+    
   </body>
 </html>

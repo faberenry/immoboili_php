@@ -1,5 +1,7 @@
 <?php
+use OpenApi\Annotations as OA;
   require('../config.inc.php');
+  require("/vendor/autoload.php");
   $mittente = $_SESSION['userLogged'];
   $destinatario = $_GET['destinatario'];
   $sql = "SELECT codUtente FROM utente WHERE username = '$destinatario'";

@@ -180,4 +180,5 @@
     //header('Location: ./pages/ricerca.php?error=dettaglioNotFound');
     //exit();
   }
+  echo "<br/><br/><br/><br/><br/><br/><br/><br/>";
   require('./footer.php');

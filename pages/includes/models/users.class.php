@@ -1,4 +1,5 @@
 <?php
+use OpenApi\Annotations as OA;
  /*
   User
   Creazione classe user per facilitare il passaggio delle informazioni tra una pagina all'altra

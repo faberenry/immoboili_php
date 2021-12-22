@@ -1,4 +1,16 @@
-<?php 
+<?php
+use OpenApi\Annotations as OA;
+/**
+ * @OA\Info(title="Inserimento Messaggio",version="0.1")
+ */
+/**
+ * @OA\Get(
+ *     path="/",
+ *     tags=["pages"],
+ *     @OA\Response(response="200", description="Success"),
+ *     @OA\Response(response="404", description="Not found")
+ * )
+ */
   require('../config.inc.php');
   $mittente = 2;
   $corpo = $_GET['message'];

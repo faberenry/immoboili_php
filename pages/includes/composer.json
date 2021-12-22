@@ -1,0 +1,7 @@
+{
+    "require": {
+        "zircote/swagger-php": "^4.0",
+        "altravia/openapi": "^1.0",
+        "psr/log": "^1.1"
+    }
+}

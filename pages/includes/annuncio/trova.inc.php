@@ -1,6 +1,7 @@
 <?php
   //funzionamento ricerca.php (copiato e incollato lì il codice), pagina non funzionante
   require('./pages/includes/config.inc.php');
+  require("../vendor/autoload.php");
   //$codAnnnuncio = $_GET['codAnnuncio'];
 
   $sql = "SELECT * 

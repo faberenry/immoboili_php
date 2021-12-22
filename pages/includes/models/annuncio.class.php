@@ -1,4 +1,5 @@
 <?php
+use OpenApi\Annotations as OA;
 class Locazione{
   private $nomeVia;
   private $numCivico;
@@ -34,7 +35,9 @@ class Locazione{
   }
 
 }
-
+/**
+ * @OA\Info(title="Annuncio class",version="0.1")
+ */
 class Annuncio{
   public $locatore;
   public $costoMensile;

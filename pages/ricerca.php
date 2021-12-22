@@ -41,8 +41,9 @@
             </div>
             <div class="homeshowcase">
             <?php
-
+                
                 require('./pages/includes/config.inc.php');
+
                 $sql = "SELECT locazione.nomeVia, locazione.numeroCivico, locazione.citofono, annuncio.costoMensile, 
                                 annuncio.serviziVicini, annuncio.codAnnuncio, immagini.imagePath 
                         FROM annuncio 
@@ -57,7 +58,6 @@
                     $prezzo = $_GET['price'];
                     if(strpos($sql, "WHERE") !== false){
                         $sql = $sql." AND (costoMensile > $prezzo)";
-                        //echo $sql;
                     }else{
                         $sql = $sql." WHERE (costoMensile > $prezzo)";
                     }
@@ -65,8 +65,7 @@
                 if(isset($_GET['type-filter'])){
                     $tipologia = $_GET['type-filter'];
                     if(strpos($sql, "WHERE") !== false){
-                        $sql = $sql." AND (tipologiaAppartamento LIKE '%$tipologia%')";
-                        //echo $sql;
+                        $sql = $sql." AND (tipologiaAppartamento LIKE '%$tipologia%')";                    
                     }else{
                         $sql = $sql." WHERE (tipologiaAppartamento LIKE '%$tipologia%')";
                     }
@@ -74,13 +73,13 @@
                 if(isset($_GET['dimension']) && $_GET['dimension'] != "50"){
                     $dim = $_GET['dimension'];
                     if(strpos($sql, "WHERE") !== false){
-                        $sql = $sql." AND (metratura >= $dim)";
-                        //echo $sql;
+                        $sql = $sql." AND (metratura >= $dim)";                        
                     }else{
                         $sql = $sql." WHERE (metratura >= $dim)";
                     }
                 }
-                //echo $sql;
+
+
                 $result = mysqli_query($conn, $sql);
                 if($result){
                     if(mysqli_num_rows($result) > 0){
@@ -95,8 +94,7 @@
                                 }else{
                                     $path = $row['imagePath'];
                                     echo "<img src='$path' alt=''>";
-                                }
-                                ?>
+                                } ?>
                                 <div class="card-description">
                                 <?php
                                     $locazione = $row['nomeVia']." ".$row['numeroCivico'].",".$row['citofono'];
